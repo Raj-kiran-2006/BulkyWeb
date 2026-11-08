@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<div class="container management-page py-4 py-lg-5">
+    <div class="card management-card">
+        <div class="management-card-header">
+            <span class="product-eyebrow">BulkyWeb</span>
+            <h1 class="mb-0">@ViewData["Title"]</h1>
+        </div>
+        <div class="card-body p-4 p-lg-5">
+            <p>
+                This page explains what information BulkyWeb stores and how it is used to provide
+                account and bookstore features.
+            </p>
+
+            <section class="mb-4" aria-labelledby="privacy-information">
+                <h2 id="privacy-information" class="h5">Information you provide</h2>
+                <p class="mb-0">
+                    When you register or update your profile, BulkyWeb stores your email address,
+                    phone number, account type, and any profile details you provide, such as city,
+                    street address, state, and postal code.
+                </p>
+            </section>
+
+            <section class="mb-4" aria-labelledby="privacy-use">
+                <h2 id="privacy-use" class="h5">How information is used</h2>
+                <p class="mb-0">
+                    Account information is used to create and manage your account. Seller accounts
+                    are linked to books they add so customers can see who listed a book.
+                </p>
+            </section>
+
+            <section class="mb-4" aria-labelledby="privacy-contact">
+                <h2 id="privacy-contact" class="h5">Seller contact details</h2>
+                <p class="mb-0">
+                    The seller's profile phone number is shown on the book's More Details page.
+                    Entering a phone number while creating a book updates the signed-in seller's
+                    profile phone number. Books without a seller phone show a clearly labeled
+                    fictional demo number. Other profile address details are not displayed there.
+                </p>
+            </section>
+
+            <section class="mb-4" aria-labelledby="privacy-cookies">
+                <h2 id="privacy-cookies" class="h5">Sign-in and cookies</h2>
+                <p class="mb-0">
+                    BulkyWeb uses authentication cookies to keep you signed in and protect access to
+                    your account.
+                </p>
+            </section>
+
+            <section aria-labelledby="privacy-manage">
+                <h2 id="privacy-manage" class="h5">Managing your information</h2>
+                <p class="mb-0">
+                    You can review and update your phone number and profile details from the
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">My Profile</a> page
+                    after signing in. Contact the site administrator if you have questions about
+                    this policy.
+                </p>
+            </section>
+        </div>
+    </div>
+</div>

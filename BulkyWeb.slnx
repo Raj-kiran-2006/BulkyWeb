@@ -1,3 +1,9 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="Bulky.DataAccess/Bulky.DataAccess.csproj" Id="a973c2d2-d7da-456c-94b9-b211efd6f6d3" />
+  <Project Path="Bulky.Models/Bulky.Models.csproj" Id="8b1ad697-5654-4426-8466-fce4a03bac8e" />
+  <Project Path="Bulky.Utility/Bulky.Utility.csproj" Id="8087097b-e264-477c-82c1-fa86bbd5e00b" />
   <Project Path="BulkyWeb/BulkyWeb.csproj" />
 </Solution>

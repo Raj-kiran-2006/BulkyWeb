@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720" role="img" aria-labelledby="title">
+  <title id="title">Dark Skies</title>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1">
+      <stop stop-color="#101a3e"/>
+      <stop offset=".68" stop-color="#344d75"/>
+      <stop offset="1" stop-color="#e28b78"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="720" fill="url(#bg)"/>
+  <g fill="#f6e6c8">
+    <circle cx="92" cy="149" r="2"/><circle cx="382" cy="131" r="3"/><circle cx="318" cy="210" r="2"/>
+    <circle cx="146" cy="242" r="2"/><circle cx="414" cy="286" r="2"/><circle cx="63" cy="301" r="2"/>
+  </g>
+  <circle cx="240" cy="290" r="82" fill="#f2d7b0"/>
+  <circle cx="278" cy="266" r="78" fill="#263c65"/>
+  <path d="M0 435q85-88 164 0t160 0 156 0v285H0z" fill="#1b294d"/>
+  <path d="M0 508q96-75 189 0t156 0 135 0v212H0z" fill="#111a35"/>
+  <path d="M0 579q120-60 236 0t244 0v141H0z" fill="#0c142c"/>
+  <text x="240" y="111" fill="#e7d5bc" font-family="Arial,sans-serif" font-size="17" letter-spacing="6" text-anchor="middle">WHEN NIGHT FALLS</text>
+  <text x="240" y="600" fill="#fff8ed" font-family="Georgia,serif" font-size="58" letter-spacing="3" text-anchor="middle">DARK</text>
+  <text x="240" y="655" fill="#fff8ed" font-family="Georgia,serif" font-size="44" letter-spacing="8" text-anchor="middle">SKIES</text>
+  <text x="240" y="690" fill="#e7d5bc" font-family="Arial,sans-serif" font-size="14" letter-spacing="3" text-anchor="middle">NANCY HOOVER</text>
+</svg>

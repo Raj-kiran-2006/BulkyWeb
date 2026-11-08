@@ -1,0 +1,102 @@
+﻿@model Bulky.Models.Product
+
+@{
+    ViewData["Title"] = Model.Title;
+    const string samplePhoneDisplay = "+1 (202) 555-0143";
+    const string samplePhoneLink = "+12025550143";
+}
+
+<div class="container product-details-page py-4 py-lg-5">
+    <article class="product-details-card">
+        <header class="product-details-header">
+            <span class="product-eyebrow">Book details</span>
+            <h1>@Model.Title</h1>
+            <p>by @Model.Author</p>
+        </header>
+
+        <div class="row g-4 g-lg-5 p-3 p-md-4 p-lg-5">
+            <div class="col-12 col-md-5">
+                <div class="product-cover-frame">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img src="@Model.ImageUrl" class="product-cover" alt="Cover of @Model.Title" />
+                    }
+                    else
+                    {
+                        <div class="product-cover-placeholder">
+                            <i class="bi bi-book" aria-hidden="true"></i>
+                            <span>No cover available</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7">
+                <div class="product-details-content">
+                    @if (Model.Category != null)
+                    {
+                        <span class="product-category">@Model.Category.Name</span>
+                    }
+
+                    <p class="product-isbn"><span>ISBN</span> @Model.ISBN</p>
+
+                    <div class="product-prices">
+                        <h2>Pricing</h2>
+                        <div class="table-responsive">
+                            <table class="table product-price-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Quantity</th>
+                                        <th>1-50</th>
+                                        <th>51-100</th>
+                                        <th>100+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Price</th>
+                                        <td>@Model.Price.ToString("c")</td>
+                                        <td>@Model.Price50.ToString("c")</td>
+                                        <td>@Model.Price100.ToString("c")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="product-list-price">
+                            List price <span>@Model.ListPrice.ToString("c")</span>
+                        </p>
+                    </div>
+
+                    <section class="product-description">
+                        <h2>Description</h2>
+                        <p>@Model.Description</p>
+                    </section>
+
+                    <section class="product-contact" aria-labelledby="product-contact-heading">
+                        <h2 id="product-contact-heading">Contact seller</h2>
+                        @if (!string.IsNullOrWhiteSpace(Model.Seller?.PhoneNumber))
+                        {
+                            <p>
+                                Phone:
+                                <a href="tel:@Model.Seller.PhoneNumber">@Model.Seller.PhoneNumber</a>
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="mb-0">
+                                Demo phone:
+                                <a href="tel:@samplePhoneLink">@samplePhoneDisplay</a>
+                                <span class="text-muted">(sample number)</span>
+                            </p>
+                        }
+                    </section>
+
+                    <a asp-action="Index" class="btn btn-outline-secondary product-back-button">
+                        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

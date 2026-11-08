@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720" role="img" aria-labelledby="title">
+  <title id="title">Cotton Candy</title>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#ffb2c9"/>
+      <stop offset="1" stop-color="#f9d9a7"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="720" fill="url(#bg)"/>
+  <circle cx="100" cy="210" r="40" fill="#fff4dc" fill-opacity=".55"/>
+  <circle cx="375" cy="180" r="25" fill="#fff4dc" fill-opacity=".7"/>
+  <circle cx="376" cy="354" r="44" fill="#fff4dc" fill-opacity=".4"/>
+  <path d="M230 300c-52-12-76-70-34-103 7-55 79-63 105-18 51 4 69 65 31 94l-34 46h-62z" fill="#fff4f8"/>
+  <path d="m240 322 18 181" stroke="#a56b66" stroke-width="9" stroke-linecap="round"/>
+  <path d="M140 508q100-62 200 0" fill="none" stroke="#fff5e7" stroke-opacity=".75" stroke-width="4"/>
+  <text x="240" y="108" fill="#8f5366" font-family="Arial,sans-serif" font-size="17" letter-spacing="5" text-anchor="middle">A SWEET LITTLE STORY</text>
+  <text x="240" y="575" fill="#713e5c" font-family="Georgia,serif" font-size="58" text-anchor="middle">COTTON</text>
+  <text x="240" y="633" fill="#713e5c" font-family="Georgia,serif" font-size="55" letter-spacing="4" text-anchor="middle">CANDY</text>
+  <text x="240" y="682" fill="#8f5366" font-family="Arial,sans-serif" font-size="15" letter-spacing="3" text-anchor="middle">ABBY MUSCLES</text>
+</svg>

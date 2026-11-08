@@ -1,0 +1,255 @@
+﻿@model Category
+
+<div class="container management-page py-4 py-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 col-xl-7">
+            <div class="card management-card mt-3">
+                <div class="management-card-header">
+                    <span class="product-eyebrow">Catalog management</span>
+                    <h1 class="mb-1">
+                        Create Category
+                    </h1>
+                    <p class="mb-0">Create a collection to keep your products organized.</p>
+                </div>
+
+                <div class="card-body p-4 p-lg-5">
+                    <form method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Name"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="DisplayOrder"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="DisplayOrder"
+                                   class="form-control" />
+
+                            <span asp-validation-for="DisplayOrder"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <button type="submit"
+                                        class="btn btn-primary w-100 form-primary-button">
+                                    Create
+                                </button>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <a asp-controller="Category"
+                                   asp-action="Index"
+                                   class="btn btn-outline-secondary w-100">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+```
+@* 
+@model Category
+
+
+<form method="post">
+    <!--
+        method="post"
+        When the user submits this form, the form data is sent
+        to the controller using the HTTP POST method.
+    -->
+
+    <div class="border p-3 mt-4">
+
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Category</h2>
+            <hr />
+        </div>
+
+        <!--
+            asp-validation-summary="All"
+
+            This displays all validation errors from ModelState.
+
+            "All" -> Shows both:
+                     1. Property-specific errors
+                     2. Common/model-level errors
+
+            "ModelOnly" -> Shows only common/model-level errors.
+
+            Example:
+            ModelState.AddModelError("", "Name cannot be a test");
+
+            "None" -> Does not display validation errors.
+        -->
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <div class="mb-3 row p-1">
+
+            <!--
+                asp-for="Name"
+
+                Connects this label with the Name property
+                of the Category model.
+
+                The label text is generated based on the
+                Name property.
+            -->
+            <label asp-for="Name" class="p-0"></label>
+
+
+            <!--
+                asp-for="Name"
+
+                Connects this input with the Name property
+                of the Category model.
+
+                It generates the required HTML attributes
+                based on the Name property's configuration
+                and validation rules.
+            -->
+            <input asp-for="Name" class="form-control" />
+
+
+            <!--
+                asp-validation-for="Name"
+
+                This displays validation errors specifically
+                for the Name property.
+
+                For example, if Category has:
+
+                [Required]
+                public string Name { get; set; }
+
+                and the user leaves Name empty,
+                the validation error will be displayed here.
+
+                The validation error is created by the
+                validation system, and this tag helper
+                displays the error.
+            -->
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+
+
+        <div class="mb-3 row p-1">
+
+            <!--
+                Connects the label with the DisplayOrder
+                property of the Category model.
+            -->
+            <label asp-for="DisplayOrder" class="p-0"></label>
+
+
+            <!--
+                Connects the input with the DisplayOrder
+                property of the Category model.
+
+                The generated input is based on the
+                DisplayOrder property's type and rules.
+            -->
+            <input asp-for="DisplayOrder" class="form-control" />
+
+
+            <!--
+                Displays validation errors specifically
+                for the DisplayOrder property.
+            -->
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-6 col-md-3">
+
+                <!--
+                    type="submit"
+
+                    When this button is clicked,
+                    the form is submitted to the controller.
+                -->
+                <button type="submit" class="btn btn-primary form-control">
+                    Create
+                </button>
+
+            </div>
+
+
+            <div class="col-6 col-md-3">
+
+                <!--
+                    asp-controller="Category"
+                    This specifies the CategoryController.
+
+                    asp-action="Index"
+                    This specifies the Index action method.
+
+                    So this link takes the user to:
+
+                    CategoryController -> Index()
+                -->
+                <a asp-controller="Category"
+                   asp-action="Index"
+                   class="btn btn-outline-secondary form-control">
+
+                    Back to List
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+
+<!--
+    This section is used for client-side validation.
+
+    _ValidationScriptsPartial contains the JavaScript
+    validation scripts required for client-side validation.
+
+    Client-side validation means validation can happen
+    in the browser before the form is sent to the server.
+-->
+@section Scripts
+{
+    @{
+        // _ValidationScriptsPartial is the Razor partial
+        // that contains the validation JavaScript files.
+
+        <partial name="_ValidationScriptsPartial" />
+    }
+} *@

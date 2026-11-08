@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720" role="img" aria-labelledby="title">
+  <title id="title">The Glass Meridian</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#172846"/>
+      <stop offset=".62" stop-color="#477d91"/>
+      <stop offset="1" stop-color="#e3a776"/>
+    </linearGradient>
+    <linearGradient id="glass" x2="1" y2="1">
+      <stop stop-color="#d9f4ed" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#77b8bd" stop-opacity=".18"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="720" fill="url(#sky)"/>
+  <circle cx="240" cy="275" r="118" fill="none" stroke="#d9edf0" stroke-opacity=".38" stroke-width="2"/>
+  <circle cx="240" cy="275" r="79" fill="none" stroke="#d9edf0" stroke-opacity=".58" stroke-width="2"/>
+  <path d="M0 420q110-62 240 0t240 0v300H0z" fill="#18344c"/>
+  <path d="M0 487q112-43 240 0t240 0" fill="none" stroke="#aad8d4" stroke-opacity=".65" stroke-width="3"/>
+  <path d="m202 435 18-189h40l18 189z" fill="url(#glass)" stroke="#d7eeee" stroke-width="3"/>
+  <path d="M214 246h52l-8-42h-36z" fill="#f8d6a1"/>
+  <path d="M240 186 216 205h48z" fill="#f1c987"/>
+  <path d="M0 580q105-56 210 0t270 0v140H0z" fill="#10283e"/>
+  <text x="240" y="100" fill="#e6ece2" font-family="Arial,sans-serif" font-size="15" letter-spacing="5" text-anchor="middle">THE EDGE OF EVERY MAP</text>
+  <text x="240" y="594" fill="#fff7e7" font-family="Georgia,serif" font-size="47" text-anchor="middle">THE GLASS</text>
+  <text x="240" y="647" fill="#fff7e7" font-family="Georgia,serif" font-size="43" letter-spacing="4" text-anchor="middle">MERIDIAN</text>
+  <text x="240" y="687" fill="#d5e7dc" font-family="Arial,sans-serif" font-size="15" letter-spacing="3" text-anchor="middle">MIRA SEN</text>
+</svg>

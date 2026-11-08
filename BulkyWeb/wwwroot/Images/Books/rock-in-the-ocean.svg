@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720" role="img" aria-labelledby="title">
+  <title id="title">Rock in the Ocean</title>
+  <defs>
+    <linearGradient id="sea" x2="0" y2="1">
+      <stop stop-color="#a5d8d1"/>
+      <stop offset=".46" stop-color="#348e9b"/>
+      <stop offset="1" stop-color="#123c5a"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="720" fill="url(#sea)"/>
+  <circle cx="353" cy="173" r="52" fill="#f5dca7"/>
+  <path d="M0 378q62-43 120 0t120 0 120 0 120 0v342H0z" fill="#247184"/>
+  <path d="M0 442q75-50 150 0t150 0 180 0v278H0z" fill="#18546e"/>
+  <path d="M0 524q72-45 144 0t144 0 192 0v196H0z" fill="#103c59"/>
+  <path d="m143 476 48-129 51-55 47 45 47 139-57 54-117-6z" fill="#333d4c"/>
+  <path d="m195 347 47-55 47 45-47 10z" fill="#59616a"/>
+  <path d="M38 589q83-24 166 0t238 0" fill="none" stroke="#b8e1d5" stroke-opacity=".55" stroke-width="3"/>
+  <text x="240" y="110" fill="#f2ead8" font-family="Arial,sans-serif" font-size="16" letter-spacing="5" text-anchor="middle">A JOURNEY THROUGH THE DEEP</text>
+  <text x="240" y="595" fill="#fff7e8" font-family="Georgia,serif" font-size="43" text-anchor="middle">ROCK IN</text>
+  <text x="240" y="646" fill="#fff7e8" font-family="Georgia,serif" font-size="41" letter-spacing="5" text-anchor="middle">THE OCEAN</text>
+  <text x="240" y="687" fill="#bce4dc" font-family="Arial,sans-serif" font-size="15" letter-spacing="3" text-anchor="middle">RON PARKER</text>
+</svg>
