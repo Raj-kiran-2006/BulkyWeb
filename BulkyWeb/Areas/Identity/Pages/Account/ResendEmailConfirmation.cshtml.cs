@@ -3,12 +3,14 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Mail;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
@@ -21,11 +23,16 @@ public class ResendEmailConfirmationModel : PageModel
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IEmailSender _emailSender;
+    private readonly ILogger<ResendEmailConfirmationModel> _logger;
 
-    public ResendEmailConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
+    public ResendEmailConfirmationModel(
+        UserManager<ApplicationUser> userManager,
+        IEmailSender emailSender,
+        ILogger<ResendEmailConfirmationModel> logger)
     {
         _userManager = userManager;
         _emailSender = emailSender;
+        _logger = logger;
     }
 
     /// <summary>
@@ -76,10 +83,19 @@ public class ResendEmailConfirmationModel : PageModel
             pageHandler: null,
             values: new { userId = userId, code = code },
             protocol: Request.Scheme)!;
-        await _emailSender.SendEmailAsync(
-            Input.Email,
-            "Confirm your email",
-            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+        try
+        {
+            await _emailSender.SendEmailAsync(
+                Input.Email,
+                "Confirm your email",
+                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+        }
+        catch (Exception exception) when (exception is SmtpException or InvalidOperationException or FormatException)
+        {
+            _logger.LogError(exception, "Failed to resend an email confirmation.");
+            ModelState.AddModelError(string.Empty, "We couldn't send the confirmation email. Please try again later or contact the site administrator.");
+            return Page();
+        }
 
         ModelState.AddModelError(string.Empty, "Verification email sent. Please check your email.");
         return Page();

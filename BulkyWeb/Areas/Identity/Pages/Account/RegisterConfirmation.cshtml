@@ -5,6 +5,14 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<p>
-    Please check your email to confirm your account.
-</p>
+@if (Model.EmailSent)
+{
+    <p>Please check your email to confirm your account.</p>
+}
+else
+{
+    <p class="text-danger">
+        Your account was created, but the confirmation email could not be sent. Please try again later or contact the site administrator.
+    </p>
+    <a asp-page="./ResendEmailConfirmation">Try sending the confirmation email again</a>
+}
