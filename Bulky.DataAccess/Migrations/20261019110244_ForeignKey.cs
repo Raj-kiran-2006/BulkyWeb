@@ -10,37 +10,64 @@ namespace BulkyWeb.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Products_Categories_Category",
-                table: "Products");
+            migrationBuilder.Sql(
+                """
+                IF EXISTS (
+                    SELECT 1
+                    FROM sys.foreign_keys
+                    WHERE name = N'FK_Products_Categories_Category'
+                      AND parent_object_id = OBJECT_ID(N'dbo.Products'))
+                    ALTER TABLE [Products] DROP CONSTRAINT [FK_Products_Categories_Category];
 
-            migrationBuilder.DropIndex(
-                name: "IX_Products_Category",
-                table: "Products");
+                IF EXISTS (
+                    SELECT 1
+                    FROM sys.indexes
+                    WHERE name = N'IX_Products_Category'
+                      AND object_id = OBJECT_ID(N'dbo.Products'))
+                    DROP INDEX [IX_Products_Category] ON [Products];
 
-            migrationBuilder.DropColumn(
-                name: "Category",
-                table: "Products");
+                IF COL_LENGTH(N'dbo.Products', N'Category') IS NOT NULL
+                    ALTER TABLE [Products] DROP COLUMN [Category];
 
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "CategoryId",
-                value: 2);
+                IF COL_LENGTH(N'dbo.Products', N'CategoryId') IS NULL
+                    ALTER TABLE [Products] ADD [CategoryId] int NOT NULL
+                        CONSTRAINT [DF_Products_CategoryId] DEFAULT (1);
+                """);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
+            migrationBuilder.Sql(
+                """
+                UPDATE [Products]
+                SET [CategoryId] = CASE [Id]
+                    WHEN 1 THEN 2
+                    WHEN 2 THEN 1
+                    WHEN 3 THEN 2
+                    WHEN 4 THEN 1
+                    WHEN 5 THEN 2
+                    WHEN 6 THEN 1
+                    ELSE 1
+                END
+                WHERE [CategoryId] IS NULL OR [CategoryId] = 0;
+                """);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Products_Categories_CategoryId",
-                table: "Products",
-                column: "CategoryId",
-                principalTable: "Categories",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+            migrationBuilder.Sql(
+                """
+                ALTER TABLE [Products] ALTER COLUMN [CategoryId] int NOT NULL;
+
+                IF NOT EXISTS (
+                    SELECT 1
+                    FROM sys.indexes
+                    WHERE name = N'IX_Products_CategoryId'
+                      AND object_id = OBJECT_ID(N'dbo.Products'))
+                    CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);
+
+                IF NOT EXISTS (
+                    SELECT 1
+                    FROM sys.foreign_keys
+                    WHERE name = N'FK_Products_Categories_CategoryId'
+                      AND parent_object_id = OBJECT_ID(N'dbo.Products'))
+                    ALTER TABLE [Products] ADD CONSTRAINT [FK_Products_Categories_CategoryId]
+                        FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE CASCADE;
+                """);
         }
 
         /// <inheritdoc />
