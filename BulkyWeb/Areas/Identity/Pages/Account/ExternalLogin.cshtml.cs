@@ -3,6 +3,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Bulky.Utility;
 using BulkyWeb.Data;
 
 namespace BulkyWeb.Areas.Identity.Pages.Account;
@@ -163,6 +165,13 @@ public class ExternalLoginModel : PageModel
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+
+                    var roleResult = await _userManager.AddToRoleAsync(user, SD.Role_Customer);
+                    if (!roleResult.Succeeded)
+                    {
+                        throw new InvalidOperationException(
+                            $"Unable to assign the Customer role: {string.Join("; ", roleResult.Errors.Select(error => error.Description))}");
+                    }
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
